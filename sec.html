@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transparência - Secretaria de Educação</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --cor-principal-verde: #28a745; /* Um verde vibrante */
+            --cor-secundaria-azul: #007bff; /* Um azul clássico */
+            --cor-fundo-branco: #ffffff;
+            --cor-texto-preto: #333333;
+            --cor-detalhe-cinza: #f8f9fa;
+            --cor-borda-documento: #dee2e6;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--cor-detalhe-cinza);
+            color: var(--cor-texto-preto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal-verde) 0%, var(--cor-secundaria-azul) 100%);
+            color: var(--cor-fundo-branco);
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(25deg);
+            z-index: 0;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header p {
+            font-size: 1.1em;
+            margin-top: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .search-bar {
+            background-color: var(--cor-fundo-branco);
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--cor-principal-verde);
+        }
+
+        .search-bar input[type="text"] {
+            flex-grow: 1;
+            padding: 0.8rem 1rem;
+            border: 2px solid var(--cor-borda-documento);
+            border-radius: 8px;
+            font-size: 1em;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-bar input[type="text"]:focus {
+            border-color: var(--cor-secundaria-azul);
+        }
+
+        .search-bar button {
+            background-color: var(--cor-secundaria-azul);
+            color: var(--cor-fundo-branco);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-bar button:hover {
+            background-color: #0056b3; /* Um azul um pouco mais escuro */
+        }
+
+        .document-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .document-card {
+            background-color: var(--cor-fundo-branco);
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border-top: 6px solid var(--cor-principal-verde);
+        }
+
+        .document-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .document-header {
+            padding: 1.2rem 1.5rem;
+            background-color: var(--cor-detalhe-cinza);
+            border-bottom: 1px solid var(--cor-borda-documento);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .document-header .icon {
+            font-size: 2.5em;
+            color: var(--cor-secundaria-azul);
+            background-color: rgba(0, 123, 255, 0.1);
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+
+        .document-header h3 {
+            margin: 0;
+            font-size: 1.4em;
+            color: var(--cor-texto-preto);
+            flex-grow: 1;
+        }
+
+        .document-body {
+            padding: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .document-body p {
+            font-size: 0.95em;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        .document-preview {
+            width: 100%;
+            height: 250px; /* Altura fixa para pré-visualização */
+            border: 1px solid var(--cor-borda-documento);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 1rem;
+            background-color: #f0f0f0; /* Cor de fundo para o iframe */
+        }
+
+        .document-preview iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .document-footer {
+            padding: 1.2rem 1.5rem;
+            background-color: var(--cor-detalhe-cinza);
+            border-top: 1px solid var(--cor-borda-documento);
+            text-align: right;
+        }
+
+        .document-footer a {
+            background-color: var(--cor-principal-verde);
+            color: var(--cor-fundo-branco);
+            text-decoration: none;
+            padding: 0.7rem 1.2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .document-footer a:hover {
+            background-color: #218838; /* Um verde um pouco mais escuro */
+        }
+
+        footer {
+            background-color: var(--cor-texto-preto);
+            color: var(--cor-fundo-branco);
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .search-bar {
+                flex-direction: column;
+            }
+            .search-bar button {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-graduation-cap"></i> Portal da Transparência</h1>
+        <p>Secretaria de Educação</p>
+    </header>
+
+    <div class="container">
+        <div class="search-bar">
+            <input type="text" placeholder="Pesquisar documentos...">
+            <button><i class="fas fa-search"></i> Pesquisar</button>
+        </div>
+
+        <div class="document-grid">
+            <div class="document-card">
+                <div class="document-header">
+                    <i class="icon fas fa-file-invoice"></i>
+                    <h3>Relatório Anual de Gastos 2024</h3>
+                </div>
+                <div class="document-body">
+                    <p>Detalhes sobre os investimentos e despesas da Secretaria de Educação durante o ano de 2024, incluindo alocação de recursos por área e programas educacionais.</p>
+                    <div class="document-preview">
+                        <iframe src="https://drive.google.com/file/d/1nLsl1sjyFADnJ7uznUJUIvH94voquv04/preview" width="640" height="480" allow="autoplay"></iframe> width="640" height="480" allow="autoplay"></iframe>" title="Pré-visualização do Relatório Anual de Gastos 2018"></iframe>
+                    </div>
+                </div>
+                <div class="document-footer">
+                    <a href="https://drive.usercontent.google.com/download?id=1nLsl1sjyFADnJ7uznUJUIvH94voquv04&export=download&authuser=0" target="_blank"><i class="fas fa-download"></i> Baixar Documento</a>
+                </div>
+            </div>
+
+            <div class="document-card">
+                <div class="document-header">
+                    <i class="icon fas fa-chart-line"></i>
+                    <h3>Plano de Metas Educacionais 2025-2028</h3>
+                </div>
+                <div class="document-body">
+                    <p>O plano estratégico com as metas e objetivos da Secretaria de Educação para os próximos anos, abordando qualidade de ensino, infraestrutura e inclusão.</p>
+                    <div class="document-preview">
+                        <iframe src="https://drive.google.com/file/d/1c6z9reQfKOAYkF88YB8mBXHyOWjFXxd5/preview" width="640" height="480" allow="autoplay"></iframe></iframe>
+                    </div>
+                </div>
+                <div class="document-footer">
+                    <a href="https://drive.usercontent.google.com/download?id=1c6z9reQfKOAYkF88YB8mBXHyOWjFXxd5&export=download&authuser=0" target="_blank"><i class="fas fa-download"></i> Baixar Documento</a>
+                </div>
+            </div>
+
+            <div class="document-card">
+                <div class="document-header">
+                    <i class="icon fas fa-book"></i>
+                    <h3>Edital de Concurso para Professores</h3>
+                </div>
+                <div class="document-body">
+                    <p>Confira o edital completo do concurso público para preenchimento de vagas de professores da rede estadual, com informações sobre cargos, requisitos e datas.</p>
+                    <div class="document-preview">
+                        <iframe src="https://drive.google.com/file/d/1HUHTYVJuMqcGjZc95VixpeS9ijNe14g4/preview" width="640" height="480" allow="autoplay"></iframe> title="Pré-visualização do Edital de Concurso"></iframe>
+                    </div>
+                </div>
+                <div class="document-footer">
+                    <a href="https://drive.usercontent.google.com/download?id=1HUHTYVJuMqcGjZc95VixpeS9ijNe14g4&export=download&authuser=0" target="_blank"><i class="fas fa-download"></i> Baixar Documento</a>
+                </div>
+            </div>
+
+            </div>
+    </div>
+
+    <footer>
+        &copy; 2025 Secretaria de Educação. Todos os direitos reservados.
+    </footer>
+</body>
+</html>
