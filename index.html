@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secretaria de Educação - Portal da Transparência</title>
     <link rel="icon" type="image/png" href="SEMES.png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Removido: Link para Google Fonts -->
+    <!-- Removido: Link para Font Awesome -->
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -26,7 +26,7 @@
         @tailwind utilities;
 
         html, body {
-            font-family: 'Inter', sans-serif; /* Usando Inter para um visual mais moderno */
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* Usando fonte do sistema */
             scroll-behavior: smooth;
         }
 
@@ -129,7 +129,8 @@
                     id="searchButton"
                     class="bg-white text-blue-600 px-5 py-3 text-lg font-semibold hover:bg-blue-100 flex items-center gap-2"
                 >
-                    <i class="fas fa-search"></i>
+                    <!-- Ícone de pesquisa SVG inline -->
+                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 </button>
             </div>
         </div>
@@ -227,7 +228,6 @@
          */
         function createDocumentCard(doc) {
             const card = document.createElement('div');
-            // Classes removidas: transform hover:scale-105 hover:shadow-2xl transition-all duration-300
             card.className = 'bg-white rounded-xl shadow-lg overflow-hidden flex flex-col border-t-8 border-green-500';
 
             const embedUrl = getEmbeddableUrl(doc.documentUrl); // Usa a URL embeddable para o iframe
@@ -262,7 +262,9 @@
                         rel="noopener noreferrer"
                         class="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-lg font-bold text-lg hover:bg-green-700"
                     >
-                        <i class="fas fa-download"></i> Baixar Documento
+                        <!-- Ícone de download SVG inline -->
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                        Baixar Documento
                     </a>
                 </div>
             `;
