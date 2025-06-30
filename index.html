@@ -6,9 +6,7 @@
     <title>Secretaria de Educação - Portal da Transparência</title>
     <!-- Favicon: Mantenha seu favicon otimizado (ex: formato WebP, tamanho adequado) -->
     <link rel="icon" type="image/png" href="SEMES.png">
-
-    <!-- Tailwind CSS CDN - Ideal para prototipagem e desenvolvimento rápido.
-         Para produção, considere purgar o CSS não utilizado para reduzir o tamanho do arquivo. -->
+    <!-- Tailwind CSS CDN - Ideal para prototipagem e desenvolvimento rápido.         Para produção, considere purgar o CSS não utilizado para reduzir o tamanho do arquivo. -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
@@ -70,9 +68,7 @@
         .aspect-a4 {
             position: relative;
             width: 100%;
-            /* Proporção de uma página A4 (altura = 1.4142 * largura).
-               O valor 134.35% foi mantido conforme sua escolha original,
-               assumindo que é um ajuste intencional para o seu design. */
+            /* Proporção de uma página A4 (altura = 1.4142 * largura).               O valor 134.35% foi mantido conforme sua escolha original,               assumindo que é um ajuste intencional para o seu design. */
             padding-bottom: 134.35%;
             overflow: hidden; /* Garante que o conteúdo não vaze */
         }
@@ -88,7 +84,6 @@
             scrolling="no"; /* Atributo HTML para navegadores mais antigos */
             overflow: hidden; /* Propriedade CSS para navegadores modernos */
         }
-
         /* Nova classe para o overlay transparente que impede a interação com o iframe (scroll, clique) */
         .transparent-overlay {
             position: absolute;
@@ -201,7 +196,6 @@
         const appId = firebaseConfig.projectId; // Usando o projectId como appId para o path no Firebase
 
         let allPublicDocuments = []; // Armazena todos os documentos para filtragem eficiente
-
         // Referências aos elementos do DOM para manipulação
         const loadingSpinner = document.getElementById('loadingSpinner');
         const documentGrid = document.getElementById('documentGrid');
@@ -287,28 +281,16 @@
                         </div>
                         <div class="w-full bg-black bg-opacity-75 pt-0 pb-4 px-4">
                             <div class="flex rounded-lg overflow-hidden shadow-md">
-                                <!-- Botão Baixar (Esquerda, Azul) -->
-                                <a
-                                    href="${documentDownloadUrl}"
-                                    download
-                                    class="flex-1 flex items-center justify-center gap-2 bg-blue-600 text-white py-2 font-bold text-base hover:bg-blue-700 transition-colors duration-200"
-                                >
-                                    <!-- Ícone de download SVG inline -->
-                                    <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                                    Baixar
-                                </a>
-                                <!-- Divisor visual -->
-                                <div class="w-px bg-blue-500"></div>
-                                <!-- Botão Abrir (Direita, Verde) -->
+                                <!-- Botão Abrir (Verde) - Agora ocupa a largura total -->
                                 <a
                                     href="${documentDownloadUrl}"
                                     target="_blank"
                                     rel="noopener noreferrer" /* Importante para segurança em links externos */
-                                    class="flex-1 flex items-center justify-center gap-2 bg-green-600 text-white py-2 font-bold text-base hover:bg-green-700 transition-colors duration-200"
+                                    class="flex-1 flex items-center justify-center gap-2 bg-green-600 text-white py-2 font-bold text-base hover:bg-green-700 transition-colors duration-200 w-full"
                                 >
                                     <!-- Ícone de abrir em nova aba SVG inline -->
                                     <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                                    Abrir
+                                    Abrir Documento
                                 </a>
                             </div>
                         </div>
